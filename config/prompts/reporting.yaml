@@ -1,0 +1,19 @@
+version: 1
+
+write_report:
+  persona: reporting
+  user: |
+    Invoice:
+    {invoice}
+
+    Discrepancies:
+    {discrepancies}
+
+    Missing fields: {missing_fields}
+
+    The rules engine recommends: {recommendation} ({reason}).
+    Explain this recommendation. Do not change it.
+
+    Return exactly this JSON:
+    {{"summary": "<three sentences at most, for a non-technical reviewer>",
+      "next_steps": ["<concrete next step>", "..."]}}

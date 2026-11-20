@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>AI Invoice Auditor — Group 14</title>
+<style>
+body{margin:0;background:#e8edf2;color:#162b40;font:22px/1.5 Arial,sans-serif}section{box-sizing:border-box;background:white;max-width:1100px;min-height:650px;margin:28px auto;padding:55px 65px;page-break-after:always}h1{font-size:48px;line-height:1.15}h2{font-size:34px}p,li{max-width:920px}small{color:#536477}svg{width:100%;height:300px}text{font:17px Arial;fill:#162b40}rect{fill:#edf4f9;stroke:#477696;stroke-width:2}path{stroke:#477696;stroke-width:2;fill:none;marker-end:url(#arrow)}@media print{body{background:white}section{margin:0;max-width:none;min-height:0;height:180mm} @page{size:A4 landscape;margin:12mm}}
+</style></head><body>
+<section><small>GROUP 14 · 1 / 5</small><h1>AI Invoice Auditor</h1><p>Multilingual invoice validation with a durable audit trail.</p><h2>Business problem</h2><p>Manual review combines document reading, translation, arithmetic checks and purchase-order matching. The system automates these steps and routes exceptions to an auditor.</p><p><strong>Outcome:</strong> approved, rejected or awaiting human review, with recorded evidence.</p></section>
+<section><small>DEPLOYED ARCHITECTURE · 2 / 5</small><h2>Six services, clear ownership</h2>
+<svg viewBox="0 0 950 300" role="img" aria-label="Streamlit calls agent and reads PostgreSQL; agent calls ERP, storage, Redis and Bedrock; ERP reads PostgreSQL">
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto"><polygon points="0,0 8,4 0,8" fill="#477696"/></marker></defs>
+<rect x="5" y="90" width="150" height="55"/><text x="25" y="124">Streamlit UI</text>
+<rect x="265" y="90" width="160" height="55"/><text x="285" y="124">Agent / Graph</text>
+<rect x="540" y="10" width="150" height="55"/><text x="563" y="44">Mock ERP</text>
+<rect x="755" y="90" width="185" height="55"/><text x="780" y="124">PostgreSQL</text>
+<rect x="500" y="210" width="130" height="55"/><text x="530" y="244">Qdrant</text>
+<rect x="665" y="210" width="115" height="55"/><text x="695" y="244">Redis</text>
+<rect x="260" y="210" width="180" height="55"/><text x="280" y="244">AWS Bedrock</text>
+<path d="M155 117H265"/><path d="M425 105L540 40"/><path d="M690 40L800 90"/><path d="M425 125H755"/><path d="M350 145V210"/><path d="M425 140L520 210"/><path d="M425 140L700 210"/><path d="M80 90V0H850V90"/>
+</svg><p>PostgreSQL and Qdrant use named volumes. Redis is disposable. Invoice binaries remain on mounted storage. ERP access passes through its HTTP API.</p></section>
+<section><small>PROCESSING AND CONTROL · 3 / 5</small><h2>Evidence at every stage</h2><ol><li>Detect and checksum; skip previously audited content.</li><li>Extract and retain text; translate when required.</li><li>Parse typed fields and validate against rules and ERP records.</li><li>Persist findings and reports; pause for human review when needed.</li><li>Index completed invoices and reports for retrieval.</li></ol><p>Corrections are new audit rows. Revalidation preserves original extracted values.</p></section>
+<section><small>QUERYING AND IMPLEMENTATION · 4 / 5</small><h2>Grounded answers and explicit limits</h2><ul><li>Structured questions use PostgreSQL context; semantic questions retrieve Qdrant chunks.</li><li>Reflection evaluates relevance, groundedness and context relevance.</li><li>Redis caches model and query results. RAGAS provides additional evaluation.</li><li>ChatBedrock is retained by project decision; LiteLLM is a documented specification deviation.</li></ul><p>Review acceptance and retry behavior against the requirements matrix before claiming complete compliance.</p></section>
+<section><small>VERIFICATION AND OPERATIONS · 5 / 5</small><h2>Demonstrate durability, not just startup</h2><ul><li>Show six healthy services and service-name resolution.</li><li>Process an invoice and inspect its report, audit rows and vectors.</li><li>Recreate containers: retained volumes preserve the records.</li><li>Delete test volumes: the isolated stores become empty.</li><li>Inspect image users, sizes and build history; exclude credentials from submission.</li></ul><p>Use the verification JSON and requirements matrix as evidence. Synthetic storage checks do not replace live invoice, Bedrock or dashboard demonstrations.</p></section>
+</body></html>

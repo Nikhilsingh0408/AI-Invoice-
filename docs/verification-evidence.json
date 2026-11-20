@@ -1,0 +1,25 @@
+{
+  "project": "group14-verify-d3806e818e",
+  "scope": "Isolated deployment plus live Bedrock processing of synthetic invoice",
+  "checks": {
+    "startup": "PASS: six services ready; images built from current source",
+    "dns": "PASS",
+    "regressions": "2026-10-19 09:43:09,228 WARNING app.agents.translator: Translation confidence 0.0 for invoice.pdf is below 0.95 - not cached, human review needed\n2026-10-19 09:43:09,229 INFO app.agents.translator: Invoice invoice.pdf: language=de, translation confidence=0.0\n2026-10-19 09:43:09,230 WARNING app.agents.translator: Translation confidence 0.0 for invoice.pdf is below 0.95 - not cached, human review needed\n2026-10-19 09:43:09,231 INFO app.agents.translator: Invoice invoice.pdf: language=de, translation confidence=0.0\n2026-10-19 09:43:09,232 WARNING app.agents.translator: Translation confidence 0.0 for invoice.pdf is below 0.95 - not cached, human review needed\n2026-10-19 09:43:09,232 INFO app.agents.translator: Invoice invoice.pdf: language=de, translation confidence=0.0\n2026-10-19 09:43:09,233 WARNING app.agents.translator: Translation confidence 0.0 for invoice.pdf is below 0.95 - not cached, human review needed\n2026-10-19 09:43:09,233 INFO app.agents.translator: Invoice invoice.pdf: language=de, translation confidence=0.0\n2026-10-19 09:43:09,234 WARNING app.agents.parser: Ignoring unsupported correction field line_items\n2026-10-19 09:43:09,234 WARNING app.agents.parser: Ignoring unsupported correction field extras\n2026-10-19 09:43:09,236 INFO app.agents.monitor: invoice.pdf was already audited as invoice known, skipping\n2026-10-19 09:43:09,238 INFO app.agents.monitor: Retrying failed invoice known from invoice.pdf\n2026-10-19 09:43:09,240 INFO app.rag_runtime: RAG attempt 1 scored 0.000 (accepted=False)\n2026-10-19 09:43:09,940 INFO app.agents.extractor: invoice.pdf has no text layer, using OCR\n",
+    "live_invoice": {
+      "invoice_id": "bd823118-3c7a-479e-8c2d-4cda61c78bdf",
+      "status": "approved",
+      "language": "de",
+      "indexed": true,
+      "query_accepted": true,
+      "scores": {
+        "answer_relevance": 1.0,
+        "groundedness": 1.0,
+        "context_relevance": 1.0,
+        "average": 1.0
+      }
+    },
+    "persistence": "PASS",
+    "live_persistence": "PASS",
+    "deliberate_loss": "PASS"
+  }
+}

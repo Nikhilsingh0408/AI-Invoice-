@@ -1,0 +1,19 @@
+version: 1
+
+assess_erp_match:
+  persona: business_validation
+  user: |
+    Invoice as extracted:
+    {invoice}
+
+    ERP records from the mock-erp service:
+    {erp}
+
+    Differences found by the rule checks (these are correct, do not change them):
+    {findings}
+
+    Say whether the differences look like a clerical error, a pricing dispute
+    or a possible fraud, and how risky the invoice is.
+
+    Return exactly this JSON:
+    {{"summary": "<two sentences at most>", "risk_level": "low | medium | high"}}

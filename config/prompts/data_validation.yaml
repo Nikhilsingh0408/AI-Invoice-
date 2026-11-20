@@ -1,0 +1,15 @@
+version: 1
+
+assess_data_quality:
+  persona: data_validation
+  user: |
+    Invoice as extracted:
+    {invoice}
+
+    Problems found by the rule checks (these are correct, do not change them):
+    {findings}
+
+    Write a short summary of the data quality of this invoice for an auditor.
+
+    Return exactly this JSON:
+    {{"summary": "<two sentences at most>"}}

@@ -1,0 +1,55 @@
+version: 1
+
+classify_question:
+  persona: query_router
+  user: |
+    Question: {question}
+
+    "structured" = ONLY a count, list, sum or filter ACROSS many invoices, for example
+    "how many invoices were rejected?", "list invoices from HafenLogistik",
+    "total amount of approved invoices".
+    "semantic" = everything else: questions about one invoice or report, why it was
+    flagged, its discrepancies, tax, items, dates, and any general question.
+    If you are not sure, answer "semantic".
+
+    Return exactly this JSON:
+    {{"route": "structured | semantic"}}
+
+generate_answer:
+  persona: rag_generation
+  user: |
+    Question: {question}
+
+    Context:
+    {context}
+
+    Answer the question using only the context. Mention the invoice number
+    behind each fact. If the context does not contain the answer, say so.
+
+    Return exactly this JSON:
+    {{"answer": "<the answer>"}}
+
+reflect_answer:
+  persona: rag_reflection
+  user: |
+    Question: {question}
+
+    Context given to the generator:
+    {context}
+
+    Answer that was generated:
+    {answer}
+
+    Score each from 0.0 to 1.0:
+    - answer_relevance: how much of the question the answer really answers.
+      If the answer says the information is not available, give 0.0.
+    - groundedness: how many of the facts in the answer are in the context.
+      If one fact is wrong or not in the context, it cannot be 1.0.
+    - context_relevance: how many of the facts needed for the answer are in the context.
+    Give 1.0 only when nothing is missing or wrong. Half right is 0.5.
+
+    Return exactly this JSON:
+    {{"answer_relevance": <0.0-1.0>,
+      "groundedness": <0.0-1.0>,
+      "context_relevance": <0.0-1.0>,
+      "better_query": "<a better search query if the context was not relevant, otherwise null>"}}

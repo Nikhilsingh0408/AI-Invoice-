@@ -1,0 +1,50 @@
+# Git metadata (Git does not normally track this directory)
+.git/
+**/.git/
+
+# Local secrets and environment settings
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Local editor and operating system files
+.idea/
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
+Thumbs.db
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+*.bak
+
+# Build and packaging output
+build/
+dist/
+*.egg-info/
+
+# Generated reports and local runtime data
+outputs/

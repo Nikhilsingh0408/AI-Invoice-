@@ -1,0 +1,14 @@
+.env
+.env.*
+__pycache__/
+*.pyc
+.pytest_cache/
+.coverage*
+htmlcov/
+.ruff_cache/
+tests/
+.git/
+.venv/
+venv/
+.streamlit/secrets.toml
+*.md

@@ -1,0 +1,27 @@
+# Starter questions for the Evaluate tab. They are copied into the database
+# the first time the tab is opened and the test set is empty.
+# The answers match the invoices processed so far - update them if the data changes.
+
+- question: How many invoices were approved?
+  answer: Two invoices were approved, RE-2025-004 from HafenLogistik GmbH and FAC-2025-003 from Transporte Ibérico S.A.
+
+- question: Which invoices are waiting for human review?
+  answer: Three invoices need review, INV-1001 from Global Logistics Ltd, the OceanFreight Pvt Ltd invoice for PO-1006 and the SwiftMove Couriers invoice for PO-1005.
+
+- question: Which invoice was rejected?
+  answer: The invoice from BLUE LOGISTIC VIETNAM was rejected.
+
+- question: Why was INV-1001 flagged?
+  answer: The unit price on line 2 is 3.50 on the invoice but 3.00 in the ERP, so a human has to check it.
+
+- question: What is the total amount of invoice RE-2025-004?
+  answer: The total is 1760.00 EUR, a subtotal of 1600.00 plus 160.00 tax.
+
+- question: What is the PO number on invoice FAC-2025-003?
+  answer: The PO number is PO-1003.
+
+- question: Who is the vendor of invoice FAC-2025-003 and what language was it in?
+  answer: The vendor is Transporte Ibérico S.A. and the invoice was in Spanish.
+
+- question: What is the tax amount on invoice INV-1001?
+  answer: The tax amount is 147.00 USD.

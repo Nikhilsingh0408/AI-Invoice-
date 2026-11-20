@@ -1,0 +1,21 @@
+version: 1
+
+translate:
+  persona: translation
+  user: |
+    Detected source language: {source_language}
+    Target language: English
+
+    Translate the invoice text between the markers.
+
+    <<<INVOICE_TEXT
+    {text}
+    INVOICE_TEXT
+
+    Return exactly this JSON shape:
+    {{
+      "translated_text": "<the full English translation, layout preserved>",
+      "source_language": "<ISO 639-1 code of the source>",
+      "confidence": <float 0.0-1.0>,
+      "notes": "<anything you could not translate confidently, or empty>"
+    }}
